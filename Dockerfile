@@ -15,7 +15,7 @@ COPY . .
 # Fichiers statiques collectés au build (servis par WhiteNoise)
 RUN SECRET_KEY=build-only python manage.py collectstatic --noinput
 
-RUN chmod +x start.sh && useradd -m appuser && chown -R appuser /app
+RUN sed -i "s/\r$//" start.sh && chmod +x start.sh && useradd -m appuser && chown -R appuser /app
 USER appuser
 
 EXPOSE 8000
