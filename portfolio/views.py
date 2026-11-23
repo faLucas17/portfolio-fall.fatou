@@ -11,6 +11,15 @@ from .models import GroupeCompetences, Parcours, Projet, Service
 logger = logging.getLogger(__name__)
 
 
+def erreur_csrf(request, reason=""):
+    logger.warning(
+        "CSRF refusé : %s | chemin=%s | origin=%s | referer=%s | cookie_csrf=%s",
+        reason, request.path, request.META.get("HTTP_ORIGIN"),
+        request.META.get("HTTP_REFERER"), "csrftoken" in request.COOKIES,
+    )
+    return render(request, "erreur_csrf.html", {"retour": request.path}, status=403)
+
+
 def accueil(request):
     if request.method == "POST":
         form = ContactForm(request.POST)

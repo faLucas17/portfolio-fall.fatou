@@ -24,9 +24,17 @@ RENDER_HOST = os.getenv("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_HOST:
     ALLOWED_HOSTS.append(RENDER_HOST)
 
+# Adresse publique du site (Render) : toujours autorisée, même si RENDER_EXTERNAL_HOSTNAME manque
+SITE_HOST = os.getenv("SITE_HOST", "fatou-fall-portfolio.onrender.com")
+ALLOWED_HOSTS.append(SITE_HOST)
+
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if o.strip()]
+CSRF_TRUSTED_ORIGINS.append(f"https://{SITE_HOST}")
 if RENDER_HOST:
     CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_HOST}")
+
+# Page claire en cas d'échec CSRF, avec la cause écrite dans les logs
+CSRF_FAILURE_VIEW = "portfolio.views.erreur_csrf"
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -127,3 +135,11 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = env_bool("SECURE_SSL_REDIRECT", True)
     SECURE_HSTS_SECONDS = 3600
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Logs visibles dans l'onglet Logs de Render
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "root": {"handlers": ["console"], "level": "WARNING"},
+}

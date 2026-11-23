@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Session expirée{% endblock %}
+{% block content %}
+<main class="section" style="min-height:100vh;display:grid;place-items:center;text-align:center">
+  <div class="card glass" style="max-width:480px">
+    <h2>Session expirée</h2>
+    <p style="color:var(--muted)">La page était ouverte depuis trop longtemps ou le site vient d'être mis à jour. Rechargez la page et recommencez.</p>
+    <a class="btn" href="{{ retour }}">Recharger la page</a>
+  </div>
+</main>
+{% endblock %}
