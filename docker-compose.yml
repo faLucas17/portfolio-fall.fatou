@@ -1,0 +1,10 @@
+# Lancement local : docker compose up --build  puis http://localhost:8000
+services:
+  web:
+    build: .
+    env_file: .env
+    environment:
+      DEBUG: "True"
+      SECURE_SSL_REDIRECT: "False"
+    ports:
+      - "8000:8000"

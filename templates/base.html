@@ -1,0 +1,22 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ profil.nom|default:"Fatou FALL" }} | {{ profil.titre|default:"Développeuse Full Stack" }}{% endblock %}</title>
+  <meta name="description" content="{{ profil.nom }}, {{ profil.titre }} à {{ profil.localisation }}. Sites web, applications web et mobiles, API, déploiement. Disponible en freelance et en CDI.">
+  <meta property="og:title" content="{{ profil.nom }} | {{ profil.titre }}">
+  <meta property="og:description" content="{{ profil.accroche }}">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#F3F9FF">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%230EA5E9'/><text x='50' y='64' font-size='42' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'>FF</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  {% block content %}{% endblock %}
+  <script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>

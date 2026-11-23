@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: fatou-fall-portfolio
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        sync: false          # collez l'URL de connexion Neon
+      - key: DB_SSL_REQUIRE
+        value: "True"
+      - key: ADMIN_PATH
+        value: gestion/
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false          # identifiant SMTP Brevo
+      - key: EMAIL_HOST_PASSWORD
+        sync: false          # clé SMTP Brevo
+      - key: DEFAULT_FROM_EMAIL
+        sync: false          # expéditeur validé dans Brevo
+      - key: CONTACT_RECEIVER_EMAIL
+        value: ffmaman17@gmail.com
