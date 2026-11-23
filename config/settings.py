@@ -70,11 +70,13 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 # Base de données : Neon (PostgreSQL) en production via DATABASE_URL, SQLite en local.
+# Une variable DATABASE_URL vide (ex. dans .env) est traitée comme absente.
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip() or f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+    "default": dj_database_url.parse(
+        DATABASE_URL,
         conn_max_age=600,
-        ssl_require=env_bool("DB_SSL_REQUIRE", False),
+        ssl_require=DATABASE_URL.startswith("postgres") and env_bool("DB_SSL_REQUIRE", False),
     )
 }
 
