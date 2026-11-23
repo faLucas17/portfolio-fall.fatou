@@ -57,7 +57,6 @@ PROJETS = [
         technologies="Django, PostgreSQL, Neon, Cloudflare R2, Brevo, Render",
         categorie="client", statut="en_ligne", icone="globe",
         lien_demo="https://ksji-cabinet.onrender.com",
-        lien_code="https://github.com/faLucas17/KSJI",
         en_vedette=True, ordre=2,
     ),
     dict(
@@ -97,7 +96,6 @@ PROJETS = [
         technologies="Django, React, Render, Netlify, Cloudflare R2, Brevo",
         categorie="perso", statut="en_ligne", icone="book-open",
         lien_demo="https://maktaba-catk.netlify.app/",
-        lien_code="https://github.com/faLucas17/Maktaba_CATK",
         en_vedette=True, ordre=3,
     ),
     dict(
@@ -114,7 +112,6 @@ PROJETS = [
         ),
         technologies="Laravel, React, Docker, Render, Brevo",
         categorie="perso", statut="en_cours", icone="plane",
-        lien_code="https://github.com/faLucas17/teranga-voyages",
         en_vedette=True, ordre=4,
     ),
     dict(
@@ -132,7 +129,6 @@ PROJETS = [
         ),
         technologies="Expo, React Native, Django, PostgreSQL, Brevo",
         categorie="perso", statut="en_cours", icone="shopping-bag",
-        lien_code="https://github.com/faLucas17/glowluxe",
         ordre=5,
     ),
     dict(

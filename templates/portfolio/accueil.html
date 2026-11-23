@@ -142,7 +142,7 @@
             </ul>
             <div class="project__links">
               {% if p.lien_demo %}<a href="{{ p.lien_demo }}" target="_blank" rel="noopener" class="btn btn--small">Voir le site {% icone "arrow-up-right" %}</a>{% endif %}
-              {% if p.lien_code %}<a href="{{ p.lien_code }}" target="_blank" rel="noopener" class="btn btn--small btn--glass"><img src="{% static 'img/tech/github.svg' %}" alt="" width="16" height="16"> Code</a>{% endif %}
+              {% if p.lien_code %}<a href="{{ p.lien_code }}" target="_blank" rel="noopener" class="btn btn--small btn--glass"><img src="{% static 'img/tech/github.svg' %}" alt="" width="16" height="16"> Code</a>{% else %}<a href="#contact" class="btn btn--small btn--glass">Code sur demande</a>{% endif %}
             </div>
           </div>
         </article>
