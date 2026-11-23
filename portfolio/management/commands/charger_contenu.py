@@ -62,21 +62,24 @@ PROJETS = [
     ),
     dict(
         titre="Lexora",
-        sous_titre="Gestion de cabinet d'avocats",
+        sous_titre="Logiciel SaaS de gestion de cabinets d'avocats",
         description=(
-            "Plateforme de gestion pour les cabinets d'avocats : dossiers, audiences, agenda, "
-            "facturation en FCFA et portail client."
+            "Plateforme SaaS pensée pour les cabinets d'avocats d'Afrique de l'Ouest : dossiers, "
+            "audiences, agenda, facturation en FCFA et portail client. Chaque cabinet s'inscrit "
+            "librement et ses données restent strictement isolées des autres."
         ),
         points_cles=(
-            "Suivi des dossiers et des audiences\n"
-            "Agenda partagé du cabinet\n"
-            "Facturation en FCFA\n"
-            "Portail client"
+            "Multi-cabinets avec isolation des données couverte par des tests automatisés\n"
+            "Dossiers, audiences avec renvois automatiques, agenda unifié et tâches en Kanban\n"
+            "Factures générées à partir du temps passé, TVA 18 %, paiement Wave, Orange Money, virement\n"
+            "Portail client, e-mails Brevo et rappel automatique la veille de chaque audience\n"
+            "Sécurité : Cloudflare Turnstile, protection anti force brute, documents privés sur R2\n"
+            "CI GitHub Actions, Docker multi-services (Nginx, PHP-FPM, Redis), déployé sur Render"
         ),
-        technologies="Render",
+        technologies="Laravel, React, TypeScript, Tailwind CSS, PostgreSQL, Redis, Docker, Cloudflare R2, Brevo, Render",
         categorie="perso", statut="en_ligne", icone="scale",
         lien_demo="https://lexora-80dr.onrender.com/",
-        en_vedette=True, ordre=3,
+        en_vedette=True, ordre=0,
     ),
     dict(
         titre="Maktaba CATK",

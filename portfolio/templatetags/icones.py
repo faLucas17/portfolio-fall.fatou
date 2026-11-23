@@ -28,6 +28,7 @@ TECH = {
     "mysql": "mysql", "mongodb": "mongodb", "python": "python", "javascript": "javascript",
     "php": "php", "java": "java", "vue.js": "vuejs", "bootstrap": "bootstrap",
     "git": "git", "github": "github", "html": "html5",
+    "typescript": "typescript", "tailwind css": "tailwindcss", "redis": "redis",
 }
 
 
