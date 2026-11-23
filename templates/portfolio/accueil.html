@@ -59,9 +59,9 @@
     <div class="container about">
       <div class="about__photo reveal">
         {% if profil.photo_url %}
-          <img src="{{ profil.photo_url }}" alt="Photo de {{ profil.nom }}">
+          <img src="{{ profil.photo_url }}" alt="Photo de {{ profil.nom }}" width="640" height="800">
         {% else %}
-          <div class="avatar glass"><span>FF</span></div>
+          <img src="{% static 'img/photo.jpg' %}" alt="Photo de {{ profil.nom }}" width="640" height="800">
         {% endif %}
       </div>
       <div class="reveal">
@@ -228,7 +228,6 @@
 <footer class="footer">
   <div class="container footer__inner">
     <p>© {% now "Y" %} {{ profil.nom }}, {{ profil.titre }}</p>
-    <p>Développé avec Django et Docker, déployé sur Render</p>
   </div>
 </footer>
 {% endblock %}

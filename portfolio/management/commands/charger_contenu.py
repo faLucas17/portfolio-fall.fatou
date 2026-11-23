@@ -37,7 +37,9 @@ PROJETS = [
             "API, base PostgreSQL et interface React déployées sur Render"
         ),
         technologies="Django, DRF, PostgreSQL, React, Expo, Laravel, Filament, Render",
-        categorie="pro", statut="en_ligne", icone="bot", en_vedette=True, ordre=1,
+        categorie="pro", statut="en_ligne", icone="bot",
+        lien_demo="https://support-platform-admin.onrender.com/",
+        en_vedette=True, ordre=1,
     ),
     dict(
         titre="KSJI, Kébé Services Juridiques Islamiques",
@@ -53,10 +55,28 @@ PROJETS = [
             "Déployé sur Render"
         ),
         technologies="Django, PostgreSQL, Neon, Cloudflare R2, Brevo, Render",
-        categorie="client", statut="en_ligne", icone="scale",
+        categorie="client", statut="en_ligne", icone="globe",
         lien_demo="https://ksji-cabinet.onrender.com",
         lien_code="https://github.com/faLucas17/KSJI",
         en_vedette=True, ordre=2,
+    ),
+    dict(
+        titre="Lexora",
+        sous_titre="Gestion de cabinet d'avocats",
+        description=(
+            "Plateforme de gestion pour les cabinets d'avocats : dossiers, audiences, agenda, "
+            "facturation en FCFA et portail client."
+        ),
+        points_cles=(
+            "Suivi des dossiers et des audiences\n"
+            "Agenda partagé du cabinet\n"
+            "Facturation en FCFA\n"
+            "Portail client"
+        ),
+        technologies="Render",
+        categorie="perso", statut="en_ligne", icone="scale",
+        lien_demo="https://lexora-80dr.onrender.com/",
+        en_vedette=True, ordre=3,
     ),
     dict(
         titre="Maktaba CATK",
@@ -72,7 +92,10 @@ PROJETS = [
             "Publication sur le Play Store et l'App Store prévue"
         ),
         technologies="Django, React, Render, Netlify, Cloudflare R2, Brevo",
-        categorie="perso", statut="en_ligne", icone="book-open", en_vedette=True, ordre=3,
+        categorie="perso", statut="en_ligne", icone="book-open",
+        lien_demo="https://maktaba-catk.netlify.app/",
+        lien_code="https://github.com/faLucas17/Maktaba_CATK",
+        en_vedette=True, ordre=3,
     ),
     dict(
         titre="Teranga Voyages",
