@@ -24,10 +24,8 @@ services:
         sync: false
       - key: DJANGO_SUPERUSER_PASSWORD
         sync: false
-      - key: EMAIL_HOST_USER
-        sync: false          # identifiant SMTP Brevo
-      - key: EMAIL_HOST_PASSWORD
-        sync: false          # clé SMTP Brevo
+      - key: BREVO_API_KEY
+        sync: false          # clé API Brevo (SMTP & API > Clés API)
       - key: DEFAULT_FROM_EMAIL
         sync: false          # expéditeur validé dans Brevo
       - key: CONTACT_RECEIVER_EMAIL

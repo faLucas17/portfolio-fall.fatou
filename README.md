@@ -54,7 +54,7 @@ Sans base Neon, le site marche quand même, mais sur l'offre gratuite de Render 
 2. Remplissez les variables demandées :
    - `DATABASE_URL` : l'URL Neon
    - `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_EMAIL`, `DJANGO_SUPERUSER_PASSWORD` : votre compte admin
-   - `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL` : identifiants SMTP Brevo (facultatif)
+   - `BREVO_API_KEY`, `DEFAULT_FROM_EMAIL` : clé API Brevo et expéditeur validé (facultatif)
 3. Cliquez sur **Apply**. Au premier démarrage, le site crée les tables, charge vos projets et votre compte admin.
 
 Chaque `git push` redéploie automatiquement le site.
@@ -121,3 +121,10 @@ importez-la dans Overleaf (compilateur pdfLaTeX) pour la modifier, puis remplace
 Le contenu de la base Render se met à jour par des migrations de données
 (exemple : `portfolio/migrations/0003_contenu_novembre.py`), qui ne touchent pas aux liens modifiés dans l'admin.
 Le champ « Petite anecdote » du Profil (admin) ajoute une phrase à la fin de « À propos ».
+
+## E-mails (Brevo)
+
+Render gratuit bloque les ports SMTP : le formulaire de contact passe par l'**API HTTP de Brevo**.
+Variables Render : `BREVO_API_KEY` (Brevo > SMTP et API > Clés API) et `DEFAULT_FROM_EMAIL`
+(un expéditeur validé dans Brevo). Les messages arrivent sur `CONTACT_RECEIVER_EMAIL` ;
+« Répondre » écrit directement au visiteur. Chaque message reste aussi dans l'admin.

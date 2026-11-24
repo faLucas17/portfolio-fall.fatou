@@ -1,10 +1,9 @@
 import logging
 
-from django.conf import settings
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
+from .emails import envoyer_notification
 from .forms import ContactForm
 from .models import GroupeCompetences, Parcours, Projet, Service
 
@@ -35,13 +34,7 @@ def accueil(request):
         if form.is_valid():
             msg = form.save()
             try:
-                send_mail(
-                    subject=f"[Portfolio] {msg.sujet or 'Nouveau message'} de {msg.nom}",
-                    message=f"De : {msg.nom} <{msg.email}>\n\n{msg.contenu}",
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[settings.CONTACT_RECEIVER_EMAIL],
-                    fail_silently=False,
-                )
+                envoyer_notification(msg)
             except Exception:  # le message reste enregistré dans l'admin
                 logger.exception("Envoi de l'e-mail de contact impossible")
             messages.success(request, "Merci ! Votre message a bien été envoyé. Je vous réponds rapidement.")

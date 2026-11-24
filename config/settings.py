@@ -110,6 +110,11 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# E-mails du formulaire de contact : API HTTP de Brevo en production (BREVO_API_KEY),
+# car Render gratuit bloque les ports SMTP. Le SMTP ci-dessous ne sert qu'en local.
+BREVO_API_KEY = os.getenv("BREVO_API_KEY", "").strip()
+BREVO_API_URL = os.getenv("BREVO_API_URL", "https://api.brevo.com/v3/smtp/email")
+
 # E-mails du formulaire de contact via Brevo (SMTP). Si non configuré, les messages
 # sont quand même enregistrés et visibles dans l'administration.
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp-relay.brevo.com")
