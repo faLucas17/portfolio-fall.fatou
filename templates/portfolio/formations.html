@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static icones %}
+{% block title %}Mes formations | Fatou FALL{% endblock %}
+{% block content %}
+{% include "partials/nav.html" with page_interne=True %}
+
+<main>
+  <section class="page-head">
+    <div class="blob blob--1"></div>
+    <div class="container">
+      <a href="/" class="back">{% icone "arrow-up-right" "icon--back" %} Retour à l'accueil</a>
+      <p class="eyebrow">Formations</p>
+      <h1 class="page-title">Deux Masters, une seule idée</h1>
+      <p class="section__sub page-intro">
+        Pourquoi deux Masters en même temps ? Parce qu'une application sans données, c'est une coquille vide,
+        et des données sans application, personne ne les voit. J'ai voulu savoir construire l'une et
+        faire parler les autres. Les deux à l'Université Iba Der Thiam de Thiès.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+
+        <article class="card degree reveal">
+          <div class="step__head">
+            <div class="glass-icon">{% icone "code-xml" %}</div>
+            <div><p class="project__cat">2025 - 2026</p><h3>Master 2 Informatique, Génie Logiciel</h3></div>
+          </div>
+          <p class="timeline__org">Université Iba Der Thiam de Thiès</p>
+          <p>Le côté « construire » : concevoir une application, structurer son code, la tester et la livrer.
+          C'est ce qui se voit dans mes projets, du back-end jusqu'au déploiement.</p>
+          <p class="degree__label">Ce que ça donne en pratique</p>
+          <div class="filters">
+            <a class="filter" href="{% url 'projets' %}?techno=Django"><img src="{% static 'img/tech/django.svg' %}" alt="" width="16" height="16">Projets Django</a>
+            <a class="filter" href="{% url 'projets' %}?techno=Laravel"><img src="{% static 'img/tech/laravel.svg' %}" alt="" width="16" height="16">Projets Laravel</a>
+            <a class="filter" href="{% url 'projets' %}?techno=Spring%20Boot"><img src="{% static 'img/tech/spring.svg' %}" alt="" width="16" height="16">Projets Spring Boot</a>
+            <a class="filter" href="{% url 'projets' %}?techno=Docker"><img src="{% static 'img/tech/docker.svg' %}" alt="" width="16" height="16">Projets Docker</a>
+          </div>
+        </article>
+
+        <article class="card degree reveal">
+          <div class="step__head">
+            <div class="glass-icon">{% icone "chart-column" %}</div>
+            <div><p class="project__cat">2024 - 2025</p><h3>Master 2 Sciences des Données et Applications</h3></div>
+          </div>
+          <p class="timeline__org">Option Statistique, Économétrie et Modélisation</p>
+          <p>Le côté « comprendre » : statistique, économétrie et modélisation. Savoir ce qu'un chiffre dit
+          vraiment, et le montrer clairement dans un tableau de bord.</p>
+          <p class="degree__label">Mes outils</p>
+          <ul class="tags tags--logos">
+            <li><img src="{% static 'img/tech/r.svg' %}" alt="" width="15" height="15">R (ggplot2)</li>
+            <li><img src="{% static 'img/tech/python.svg' %}" alt="" width="15" height="15">Python</li>
+            <li>SQL</li><li>Power BI</li><li>Stata</li>
+          </ul>
+          <a href="/#services" class="btn btn--small btn--glass">Besoin d'un tableau de bord ?</a>
+        </article>
+      </div>
+
+      <h3 class="timeline__title skills__title reveal"><span class="glass-icon glass-icon--sm">{% icone "graduation-cap" %}</span> Avant les Masters</h3>
+      <div class="grid grid--2">
+        <article class="card reveal">
+          <p class="project__cat">2020 - 2023</p>
+          <h3>Licence Informatique, Génie Logiciel</h3>
+          <p class="timeline__org">Université Iba Der Thiam de Thiès</p>
+          <p>Mon projet de fin d'études : une application de gestion des emplois du temps, avec publication,
+          suivi de l'avancement des cours et émargement des professeurs.</p>
+        </article>
+        <article class="card reveal">
+          <p class="project__cat">Septembre - Octobre 2024</p>
+          <h3>Initiation au développement web avec Django</h3>
+          <p class="timeline__org">She Codes</p>
+          <p>Deux mois pour découvrir Django. Il est devenu mon framework de référence : on le retrouve
+          aujourd'hui dans la plupart de mes projets.</p>
+          <a href="{% url 'projets' %}?techno=Django" class="btn btn--small btn--glass">Voir mes projets Django</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include "partials/footer.html" %}
+{% endblock %}

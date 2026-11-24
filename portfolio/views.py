@@ -10,6 +10,15 @@ from .models import GroupeCompetences, Parcours, Projet, Service
 
 logger = logging.getLogger(__name__)
 
+# Logos de la boîte à outils (accueil) : chacun mène à ses projets
+HERO_STACK = ["Django", "React", "Laravel", "Docker", "PostgreSQL", "Expo", "Python", "Spring Boot", "TypeScript"]
+
+# Technos proposées en filtre sur la page Projets
+FILTRES_TECHNOS = [
+    "Django", "Laravel", "React", "TypeScript", "Expo", "Spring Boot",
+    "PostgreSQL", "MySQL", "Docker", "Cloudflare R2", "Brevo", "Render",
+]
+
 
 def erreur_csrf(request, reason=""):
     logger.warning(
@@ -52,6 +61,49 @@ def accueil(request):
         "competences": GroupeCompetences.objects.all(),
         "nb_projets": projets.count(),
         "nb_en_ligne": projets.filter(statut="en_ligne").count(),
-        "hero_stack": ["Django", "React", "Laravel", "Docker", "PostgreSQL", "Expo", "Python", "Spring Boot", "Flutter"],
+        "hero_stack": HERO_STACK,
     }
     return render(request, "portfolio/accueil.html", contexte)
+
+
+def projets(request):
+    techno = request.GET.get("techno", "").strip()
+    categorie = request.GET.get("categorie", "").strip()
+    statut = request.GET.get("statut", "").strip()
+
+    qs = Projet.objects.filter(visible=True)
+    if categorie:
+        qs = qs.filter(categorie=categorie)
+    if statut:
+        qs = qs.filter(statut=statut)
+    liste = [p for p in qs if not techno or p.utilise(techno)]
+
+    titre = "Tous mes projets"
+    if techno:
+        titre = f"Mes projets {techno}"
+    elif statut == "en_ligne":
+        titre = "Mes projets en ligne"
+    elif categorie:
+        titre = dict(Projet.CATEGORIES).get(categorie, titre)
+
+    return render(request, "portfolio/projets.html", {
+        "projets": liste,
+        "titre": titre,
+        "techno": techno,
+        "categorie": categorie,
+        "statut": statut,
+        "categories": Projet.CATEGORIES,
+        "filtres_technos": FILTRES_TECHNOS,
+        "total": Projet.objects.filter(visible=True).count(),
+    })
+
+
+def bakeli(request):
+    easy_desk = Projet.objects.filter(categorie="pro").first()
+    return render(request, "portfolio/bakeli.html", {"easy_desk": easy_desk})
+
+
+def formations(request):
+    return render(request, "portfolio/formations.html", {
+        "formations": Parcours.objects.filter(type="formation"),
+    })

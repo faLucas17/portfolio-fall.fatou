@@ -5,20 +5,8 @@ Pour tout réinitialiser : python manage.py charger_contenu --reset
 """
 from django.core.management.base import BaseCommand
 
+from portfolio.contenu import A_PROPOS, ACCROCHE, AL_BARAKAH, GLOWLUXE
 from portfolio.models import GroupeCompetences, Parcours, Profil, Projet, Service
-
-A_PROPOS = (
-    "Je suis développeuse full stack, en fin de double cursus de Master 2 à l'Université "
-    "Iba Der Thiam de Thiès : Génie Logiciel d'un côté, Sciences des Données (statistique, "
-    "économétrie, modélisation) de l'autre.\n\n"
-    "Pendant six mois chez Bakeli, j'ai travaillé sur des produits utilisés en production : "
-    "une plateforme de support client avec chatbot, son intégration sur le web et le mobile, "
-    "et l'authentification unique entre plusieurs applications.\n\n"
-    "Ce qui me distingue : je ne m'arrête pas au code. Je déploie, je configure les e-mails, "
-    "le stockage et la base de données, et je livre une application qui tourne vraiment. "
-    "Et grâce à ma formation en données, je sais aussi transformer vos chiffres en tableaux "
-    "de bord utiles."
-)
 
 PROJETS = [
     dict(
@@ -115,22 +103,10 @@ PROJETS = [
         en_vedette=True, ordre=4,
     ),
     dict(
-        titre="GlowLuxe By Sofa",
-        sous_titre="Application mobile e-commerce de mode",
-        description=(
-            "Boutique de mode (vêtements, crochet, accessoires) sous forme d'application mobile, "
-            "avec comptes clients, panier, commandes et paiements adaptés au Sénégal."
-        ),
-        points_cles=(
-            "Application mobile React Native (Expo)\n"
-            "Backend Django\n"
-            "Paiement par Wave, Orange Money et carte\n"
-            "Suivi des livraisons et e-mails avec Brevo"
-        ),
-        technologies="Expo, React Native, Django, PostgreSQL, Brevo",
-        categorie="perso", statut="en_cours", icone="shopping-bag",
-        ordre=5,
+        titre="GlowLuxe By Sofa", **GLOWLUXE,
+        categorie="perso", statut="en_cours", icone="shopping-bag", ordre=5,
     ),
+    AL_BARAKAH,
     dict(
         titre="LocaGest API",
         sous_titre="API de location de véhicules",
@@ -217,10 +193,11 @@ class Command(BaseCommand):
         profil = Profil.get()
         if not profil.a_propos:
             profil.a_propos = A_PROPOS
+            profil.accroche = ACCROCHE
             profil.save()
 
         for p in PROJETS:
-            Projet.objects.create(**p)
+            Projet.objects.create(**dict(p))
         for i, (icone, titre, desc) in enumerate(SERVICES, 1):
             Service.objects.create(icone=icone, titre=titre, description=desc, ordre=i)
         for type_, titre, org, periode, desc, ordre in PARCOURS:

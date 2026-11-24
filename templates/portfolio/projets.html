@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static icones %}
+{% block title %}{{ titre }} | Fatou FALL{% endblock %}
+{% block content %}
+{% include "partials/nav.html" with page_interne=True %}
+
+<main>
+  <section class="page-head">
+    <div class="blob blob--1"></div>
+    <div class="container">
+      <a href="/" class="back">{% icone "arrow-up-right" "icon--back" %} Retour à l'accueil</a>
+      <p class="eyebrow">Réalisations</p>
+      <h1 class="page-title">
+        {% if techno %}{% logo_tech techno as logo %}{% if logo %}<img src="{{ logo }}" alt="" width="44" height="44">{% endif %}{% endif %}
+        {{ titre }}
+      </h1>
+      <p class="section__sub">
+        {{ projets|length }} projet{{ projets|length|pluralize }}{% if techno or categorie or statut %} sur {{ total }}{% endif %}.
+        {% if not techno %}Choisissez une technologie pour voir où je l'ai utilisée.{% endif %}
+      </p>
+
+      <div class="filter-group">
+        <span class="filter-label">Technologie</span>
+        <div class="filters">
+          <a class="filter{% if not techno %} is-active{% endif %}" href="{% url 'projets' %}">Toutes</a>
+          {% for t in filtres_technos %}
+          {% logo_tech t as logo %}
+          <a class="filter{% if techno|lower == t|lower %} is-active{% endif %}" href="{% url 'projets' %}?techno={{ t|urlencode }}">{% if logo %}<img src="{{ logo }}" alt="" width="16" height="16">{% endif %}{{ t }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Type</span>
+        <div class="filters">
+          {% for code, label in categories %}
+          <a class="filter{% if categorie == code %} is-active{% endif %}" href="{% url 'projets' %}?categorie={{ code }}">{{ label }}</a>
+          {% endfor %}
+          <a class="filter{% if statut == 'en_ligne' %} is-active{% endif %}" href="{% url 'projets' %}?statut=en_ligne">En ligne</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      {% if projets %}
+      <div class="grid grid--2 projects">
+        {% for p in projets %}
+          {% include "partials/carte_projet.html" %}
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="card empty">
+        <div class="glass-icon">{% icone "code-xml" %}</div>
+        <h3>Pas encore de projet public avec {{ techno|default:"ce filtre" }}</h3>
+        <p>Je l'utilise, mais pas encore dans un projet que je peux montrer ici. Parlons-en directement.</p>
+        <a href="/#contact" class="btn btn--small">Me contacter</a>
+        <a href="{% url 'projets' %}" class="btn btn--small btn--glass">Voir tous les projets</a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</main>
+
+{% include "partials/footer.html" %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% load static %}
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© {% now "Y" %} {{ profil.nom }}, {{ profil.titre }}</p>
+    <p><a href="{% static 'cv/CV_Fatou_Fall.pdf' %}" download>Télécharger mon CV</a></p>
+  </div>
+</footer>

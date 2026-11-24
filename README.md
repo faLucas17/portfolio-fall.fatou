@@ -73,7 +73,7 @@ Envoyez l'image dans votre bucket Cloudflare R2 (accès public activé), copiez 
 
 ## 6. Mettre à jour le CV
 
-Remplacez le fichier `static/cv/CV_Fatou_FALL.pdf` par la nouvelle version (même nom), puis `git push`.
+Remplacez le fichier `static/cv/CV_Fatou_Fall.pdf` par la nouvelle version (même nom), puis `git push`.
 
 ## 7. Nom de domaine (plus tard)
 
@@ -104,3 +104,20 @@ start.sh         migrations, contenu initial, compte admin, démarrage
 - Pictogrammes : [Lucide](https://lucide.dev) (licence ISC), dans `static/img/icons`. Pour changer l'icône d'un projet ou d'un service, mettez dans l'admin le nom d'un fichier de ce dossier, par exemple `globe` ou `rocket`. Pour en ajouter, copiez un SVG depuis lucide.dev dans ce dossier.
 - Logos des technologies : [Devicon](https://devicon.dev) (licence MIT), dans `static/img/tech`. Ils s'affichent automatiquement à partir des technologies que vous écrivez.
 - Police : Inter, la même que dans Maktaba CATK.
+
+## Pages
+
+- `/` accueil · `/projets/` tous les projets (filtres `?techno=Django`, `?categorie=pro`, `?statut=en_ligne`)
+- `/experience/bakeli/` le détail du stage · `/formations/` les deux Masters
+- Les chiffres de l'accueil, les logos et les technologies des projets mènent à ces pages.
+
+## CV
+
+Le PDF est dans `static/cv/CV_Fatou_Fall.pdf`. Sa source LaTeX est dans `docs/cv/CV_Fatou_Fall.tex` :
+importez-la dans Overleaf (compilateur pdfLaTeX) pour la modifier, puis remplacez le PDF.
+
+## Mettre à jour le contenu en ligne
+
+Le contenu de la base Render se met à jour par des migrations de données
+(exemple : `portfolio/migrations/0003_contenu_novembre.py`), qui ne touchent pas aux liens modifiés dans l'admin.
+Le champ « Petite anecdote » du Profil (admin) ajoute une phrase à la fin de « À propos ».

@@ -1,0 +1,163 @@
+% ============================================================
+%  CV de Fatou FALL - compatible Overleaf (compilateur pdfLaTeX)
+% ============================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[top=1.5cm,bottom=1.5cm,left=1.8cm,right=1.8cm]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{bleu}{HTML}{0369A1}
+\definecolor{gris}{HTML}{4B5563}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.08}
+
+% Titres de section : majuscules, bleu, filet en dessous
+\titleformat{\section}{\large\bfseries\color{bleu}}{}{0pt}{\MakeUppercase}[\vspace{2pt}{\color{bleu!40}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+\setlist[itemize]{leftmargin=1.1em, itemsep=1.5pt, topsep=3pt, parsep=0pt, label=\textbullet}
+
+% \poste{Intitulé}{Organisation, lieu}{Dates}
+\newcommand{\poste}[3]{%
+  {\bfseries #1}\hfill{\color{gris}\itshape #3}\\
+  {\color{bleu}#2}\par\vspace{2pt}}
+
+% \projet{Nom}{Description courte}{Technologies}{Statut}
+\newcommand{\projet}[4]{%
+  \vspace{5pt}{\bfseries #1}, #2\hfill{\color{gris}\small #4}\\
+  {\color{gris}\small #3}\par}
+
+\begin{document}
+
+% ------------------------------------------------------------ En-tête
+\begin{center}
+  {\fontsize{22}{26}\selectfont\bfseries FATOU FALL}\\[4pt]
+  {\large\color{bleu} Développeuse Full Stack : web, mobile et données}\\[6pt]
+  {\small ffmaman17@gmail.com \;|\; +221 77 822 84 60 \;|\; Dakar, Sénégal \;|\;
+  Portfolio : \href{https://fatou-fall-portfolio.onrender.com}{fatou-fall-portfolio.onrender.com}}
+\end{center}
+\vspace{-2pt}{\color{bleu!40}\rule{\linewidth}{0.6pt}}
+
+% ------------------------------------------------------------ Profil
+\section{Profil}
+Développeuse Full Stack en fin de double cursus de Master 2, en Génie Logiciel et en Sciences des Données.
+Six mois chez Bakeli sur des produits utilisés en production, et une dizaine d'applications que j'ai
+conçues, développées et mises en ligne de bout en bout : un logiciel SaaS pour cabinets d'avocats, une
+bibliothèque numérique, une boutique mobile avec paiement Wave et Orange Money. Je ne considère pas un
+projet terminé tant qu'il ne tourne pas en ligne (Docker, Render, PostgreSQL, e-mails, stockage), et ma
+formation en données me permet aussi de transformer des chiffres en tableaux de bord utiles. Je cherche
+une équipe où construire, apprendre vite et prendre des responsabilités.
+
+% ------------------------------------------------------------ Expérience
+\section{Expérience professionnelle}
+\poste{Développeuse Full Stack (stage)}{Bakeli School of Technology, Dakar}{Mars 2026 - Septembre 2026}
+{\small\color{gris} Produits : Easy Desk, Easy Event (web et mobile), EasyCoop, Easy Suite \;|\;
+Django, DRF, PostgreSQL, React, Expo, Laravel, Filament, Render}
+\begin{itemize}
+  \item Conception et développement d'une \textbf{plateforme de support client multi-tenant} avec le chatbot
+        \textbf{WAGAN AI} : réponses automatiques aux questions fréquentes et escalade vers un agent humain
+        par Discord et e-mail.
+  \item Intégration du chatbot dans \textbf{Easy Event}, sur le \textbf{web (React)} et sur
+        l'\textbf{application mobile (Expo)}, avec identification de l'utilisateur via Laravel Sanctum et
+        traitement des escalades dans Filament.
+  \item Déploiement de la même brique dans \textbf{EasyCoop}, en coordination avec les développeurs
+        frontend et backend du produit.
+  \item Intégration de l'\textbf{authentification unique (SSO) Easy Suite} dans EasyCoop (Laravel, React) :
+        une seule connexion pour tous les produits de l'écosystème.
+  \item Transformation de l'interface d'administration en \textbf{Easy Desk}, centre de support
+        multi-projets, mis en production sur Render (API, base PostgreSQL, interface React).
+  \item Rédaction du rapport de stage et de la documentation technique.
+\end{itemize}
+
+% ------------------------------------------------------------ Projets
+\section{Projets (sélection)}
+
+\projet{Lexora}{logiciel SaaS de gestion de cabinets d'avocats}
+{Laravel, React, TypeScript, Tailwind CSS, PostgreSQL, Redis, Docker, Cloudflare R2, Brevo, Render}{En ligne}
+\begin{itemize}
+  \item Plateforme multi-cabinets : chaque cabinet s'inscrit seul, ses données restent isolées des autres
+        (isolation couverte par des tests automatisés).
+  \item Dossiers, audiences avec renvois automatiques, agenda, tâches en Kanban, portail client.
+  \item Factures générées à partir du temps passé (TVA 18 \%, FCFA), paiements Wave, Orange Money et
+        virement, rappel par e-mail la veille de chaque audience.
+  \item Intégration continue avec GitHub Actions, Docker multi-services (Nginx, PHP-FPM, Redis).
+\end{itemize}
+
+\projet{GlowLuxe By Sofa}{application mobile e-commerce de mode}
+{Expo (React Native), Django, PostgreSQL, PayTech, Brevo}{En cours}
+\begin{itemize}
+  \item Application iPhone, Android et web : catalogue, favoris, panier sans compte fusionné à la connexion.
+  \item Paiement Wave, Orange Money et carte, avec acompte selon le montant de la commande.
+  \item Attribution automatique des livreurs (disponibilité, charge, distance) et suivi en direct sur carte.
+\end{itemize}
+
+\projet{Maktaba CATK}{bibliothèque numérique, réalisée en binôme}
+{Django, React, Render, Netlify, Cloudflare R2, Brevo}{En ligne}
+\begin{itemize}
+  \item API Django sur Render, interface React sur Netlify, déploiement automatique à chaque mise à jour.
+\end{itemize}
+
+\projet{KSJI}{site d'un cabinet de services juridiques islamiques (projet client)}
+{Django, PostgreSQL (Neon), Cloudflare R2, Brevo, Render}{En ligne}
+\begin{itemize}
+  \item Recueil du besoin, développement, mise en ligne et livraison au client.
+\end{itemize}
+
+\projet{Teranga Voyages}{application pour agence de voyage}{Laravel, React, Docker}{En cours}
+\begin{itemize}
+  \item Offres, réservations et gestion de l'agence ; conteneurisée pour être déployée et commercialisée.
+\end{itemize}
+
+\projet{Al-Barakah}{plateforme de Zakat et de dons}{Laravel, Docker}{En cours}
+\begin{itemize}
+  \item Calcul de la Zakat, dons et campagnes ; cahier des charges et document technique rédigés en LaTeX.
+\end{itemize}
+
+\vspace{4pt}
+{\bfseries Aussi :} LocaGest, API de location de véhicules (Spring Boot, MySQL, JWT) ; API de gestion de
+stock (Spring Boot) ; application de gestion des emplois du temps (projet de fin de Licence).
+
+% ------------------------------------------------------------ Formation
+\section{Formation}
+\poste{Master 2 Informatique, Génie Logiciel}{Université Iba Der Thiam de Thiès}{2025 - 2026}
+\vspace{3pt}
+\poste{Master 2 Sciences des Données et Applications}{Université Iba Der Thiam de Thiès, option Statistique, Économétrie et Modélisation}{2024 - 2025}
+\vspace{3pt}
+\poste{Licence Informatique, Génie Logiciel}{Université Iba Der Thiam de Thiès}{2020 - 2023}
+\vspace{3pt}
+\poste{Initiation au développement web avec Django}{She Codes}{Septembre - Octobre 2024}
+
+% ------------------------------------------------------------ Compétences
+\section{Compétences techniques}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{3.6cm}X@{}}
+Back-end           & Django, Django REST Framework, Laravel, Spring Boot, API REST \\[2pt]
+Front-end, mobile  & React, TypeScript, Tailwind CSS, Vue.js, React Native (Expo), Flutter \\[2pt]
+Bases de données   & PostgreSQL, MySQL, MongoDB, SQL Server, Redis, Firebase \\[2pt]
+Sécurité           & JWT, Laravel Sanctum, SSO, CORS, protection anti force brute \\[2pt]
+Déploiement        & Docker, GitHub Actions, Render, Netlify, Neon, Cloudflare R2, Brevo \\[2pt]
+Données            & Python, R (ggplot2), SQL, Power BI, Stata \\[2pt]
+Langages           & Python, PHP, JavaScript, TypeScript, Java, R, SQL \\
+\end{tabularx}
+
+\section{Compétences transverses}
+\begin{itemize}
+  \item Analyse du besoin et rédaction de cahiers des charges et de documentations techniques.
+  \item Communication : responsable du pôle Communication et Stratégie Digitale d'une association.
+  \item Organisation (daily, reporting), travail en équipe, autonomie et sens du résultat.
+\end{itemize}
+
+\section{Langues}
+Français : courant \;|\; Anglais : usuel
+
+\end{document}

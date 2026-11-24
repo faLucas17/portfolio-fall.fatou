@@ -1,0 +1,15 @@
+{% load static icones %}
+<header class="nav{% if page_interne %} is-scrolled{% endif %}" id="nav">
+  <div class="container nav__inner">
+    <a href="/" class="logo"><img class="logo__avatar" src="{% static 'img/avatar.jpg' %}" alt="" width="40" height="40"><span>Fatou FALL</span></a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">{% icone "menu" %}</button>
+    <nav class="nav__links">
+      <a href="/#a-propos">À propos</a>
+      <a href="/#services">Services</a>
+      <a href="{% url 'projets' %}">Projets</a>
+      <a href="{% url 'bakeli' %}">Expérience</a>
+      <a href="{% url 'formations' %}">Formations</a>
+      <a href="/#contact" class="btn btn--small">Me contacter</a>
+    </nav>
+  </div>
+</header>

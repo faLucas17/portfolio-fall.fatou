@@ -1,0 +1,33 @@
+{% load static icones %}
+<article class="card project reveal" data-cat="{{ p.categorie }}">
+  <div class="project__media">
+    {% if p.image_url %}
+      <img src="{{ p.image_url }}" alt="Capture de {{ p.titre }}" loading="lazy">
+    {% else %}
+      <div class="glass-icon glass-icon--lg">{% icone p.icone %}</div>
+      <div class="project__logos">
+        {% logos_uniques p.liste_technos as logos %}{% for nom, url in logos %}<img src="{{ url }}" alt="{{ nom }}" title="{{ nom }}" width="26" height="26">{% endfor %}
+      </div>
+    {% endif %}
+    <span class="status status--{{ p.statut }}">{{ p.get_statut_display }}</span>
+  </div>
+  <div class="project__body">
+    <p class="project__cat">{{ p.get_categorie_display }}</p>
+    <h3>{{ p.titre }}</h3>
+    {% if p.sous_titre %}<p class="project__sub">{{ p.sous_titre }}</p>{% endif %}
+    <p>{{ p.description }}</p>
+    {% if p.liste_points %}
+    <ul class="project__points">
+      {% for pt in p.liste_points %}<li>{{ pt }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    <ul class="tags">
+      {% for t in p.liste_technos %}<li><a href="{% url 'projets' %}?techno={{ t|urlencode }}" title="Voir mes projets {{ t }}">{{ t }}</a></li>{% endfor %}
+    </ul>
+    <div class="project__links">
+      {% if p.categorie == "pro" %}<a href="{% url 'bakeli' %}" class="btn btn--small btn--glass">Mon rôle chez Bakeli</a>{% endif %}
+      {% if p.lien_demo %}<a href="{{ p.lien_demo }}" target="_blank" rel="noopener" class="btn btn--small">Voir le site {% icone "arrow-up-right" %}</a>{% endif %}
+      {% if p.lien_code %}<a href="{{ p.lien_code }}" target="_blank" rel="noopener" class="btn btn--small btn--glass"><img src="{% static 'img/tech/github.svg' %}" alt="" width="16" height="16"> Code</a>{% else %}<a href="/#contact" class="btn btn--small btn--glass">Code sur demande</a>{% endif %}
+    </div>
+  </div>
+</article>

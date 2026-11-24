@@ -24,6 +24,10 @@ class Profil(models.Model):
     github = models.URLField(default="https://github.com/faLucas17")
     linkedin = models.URLField(blank=True)
     malt = models.URLField("Profil freelance (Malt, Upwork…)", blank=True)
+    anecdote = models.CharField(
+        "Petite anecdote (optionnel)", max_length=255, blank=True,
+        help_text="Une phrase sur vous, affichée à la fin de « À propos ». Ex. : Fun fact : ...",
+    )
     photo_url = models.URLField(
         "Lien d'une photo (optionnel)",
         blank=True,
@@ -41,6 +45,17 @@ class Profil(models.Model):
     def get(cls):
         obj, _ = cls.objects.get_or_create(pk=1)
         return obj
+
+
+# Une techno « englobe » parfois d'autres noms (cliquer sur Python montre les projets Django, etc.)
+ALIAS_TECHNOS = {
+    "python": {"python", "django", "drf"},
+    "postgresql": {"postgresql", "neon"},
+    "expo": {"expo", "react native"},
+    "react": {"react", "react native"},
+    "laravel": {"laravel", "filament"},
+    "cloudflare": {"cloudflare r2", "cloudflare"},
+}
 
 
 class Projet(models.Model):
@@ -89,6 +104,11 @@ class Projet(models.Model):
 
     def liste_technos(self):
         return [t.strip() for t in self.technologies.split(",") if t.strip()]
+
+    def utilise(self, techno):
+        cible = (techno or "").strip().lower()
+        noms = ALIAS_TECHNOS.get(cible, {cible})
+        return any(t.lower() in noms for t in self.liste_technos())
 
     def liste_points(self):
         return [p.strip() for p in self.points_cles.splitlines() if p.strip()]

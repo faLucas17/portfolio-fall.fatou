@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static icones %}
+{% block title %}Mon expérience chez Bakeli | Fatou FALL{% endblock %}
+{% block content %}
+{% include "partials/nav.html" with page_interne=True %}
+
+<main>
+  <section class="page-head">
+    <div class="blob blob--1"></div>
+    <div class="container">
+      <a href="/" class="back">{% icone "arrow-up-right" "icon--back" %} Retour à l'accueil</a>
+      <p class="eyebrow">Expérience professionnelle</p>
+      <h1 class="page-title">Six mois chez Bakeli</h1>
+      <p class="page-meta">Développeuse Full Stack (stage) · Bakeli School of Technology, Dakar · Mars à septembre 2026</p>
+      <p class="section__sub page-intro">
+        J'ai rejoint Bakeli après avoir été repérée lors de leurs hackathons. Six mois plus tard, j'avais
+        touché à quatre produits de l'écosystème Easy Suite, du back-end Django jusqu'à l'application
+        mobile. Le genre d'expérience où l'on comprend vite que le code n'est que la moitié du travail :
+        l'autre moitié, c'est de le faire vivre en production, au milieu d'un produit qui existe déjà.
+      </p>
+      <div class="hero__cta">
+        {% if easy_desk.lien_demo %}<a href="{{ easy_desk.lien_demo }}" target="_blank" rel="noopener" class="btn">Voir Easy Desk en ligne {% icone "arrow-up-right" %}</a>{% endif %}
+        <a href="{% url 'projets' %}?categorie=pro" class="btn btn--glass">La fiche projet</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="steps">
+
+        <article class="card step reveal">
+          <div class="step__head">
+            <div class="glass-icon">{% icone "bot" %}</div>
+            <div><p class="project__cat">Étape 1</p><h3>Plateforme de support et chatbot WAGAN AI</h3></div>
+          </div>
+          <p>Le point de départ : une plateforme de support client <strong>multi-tenant</strong>, pensée pour
+          servir plusieurs produits à la fois. Son chatbot, WAGAN AI, répond aux questions fréquentes et, quand il
+          ne sait pas, passe la main à un agent humain, prévenu par Discord et par e-mail.</p>
+          <div class="step__logos">
+            <img src="{% static 'img/tech/django.svg' %}" alt="Django" title="Django" width="24" height="24">
+            <img src="{% static 'img/tech/postgresql.svg' %}" alt="PostgreSQL" title="PostgreSQL" width="24" height="24">
+            <img src="{% static 'img/tech/react.svg' %}" alt="React" title="React" width="24" height="24">
+            <span>Django, Django REST Framework, PostgreSQL, React</span>
+          </div>
+        </article>
+
+        <article class="card step reveal">
+          <div class="step__head">
+            <div class="glass-icon">{% icone "monitor-smartphone" %}</div>
+            <div><p class="project__cat">Étape 2</p><h3>Easy Event, sur le web et sur mobile</h3></div>
+          </div>
+          <p>J'ai ensuite intégré le chatbot dans <strong>Easy Event</strong>, la plateforme de gestion
+          d'événements : dans le site web en React, puis dans l'<strong>application mobile Expo</strong>.
+          Le chatbot reconnaît l'utilisateur connecté grâce à Laravel Sanctum, et les demandes d'escalade
+          arrivent dans l'administration Filament de l'équipe.</p>
+          <div class="step__logos">
+            <img src="{% static 'img/tech/react.svg' %}" alt="React" width="24" height="24">
+            <img src="{% static 'img/tech/expo.svg' %}" alt="Expo" width="24" height="24">
+            <img src="{% static 'img/tech/laravel.svg' %}" alt="Laravel" width="24" height="24">
+            <span>React, Expo, Laravel Sanctum, Filament</span>
+          </div>
+        </article>
+
+        <article class="card step reveal">
+          <div class="step__head">
+            <div class="glass-icon">{% icone "shield-check" %}</div>
+            <div><p class="project__cat">Étape 3</p><h3>EasyCoop et le SSO Easy Suite</h3></div>
+          </div>
+          <p>Sur <strong>EasyCoop</strong>, j'ai déployé la même brique de support, en coordination avec les
+          développeurs frontend et backend du produit. J'y ai surtout intégré l'<strong>authentification unique
+          (SSO) Easy Suite</strong> : un seul compte, une seule connexion pour passer d'un produit de
+          l'écosystème à l'autre.</p>
+          <div class="step__logos">
+            <img src="{% static 'img/tech/laravel.svg' %}" alt="Laravel" width="24" height="24">
+            <img src="{% static 'img/tech/react.svg' %}" alt="React" width="24" height="24">
+            <span>Laravel, React, SSO</span>
+          </div>
+        </article>
+
+        <article class="card step reveal">
+          <div class="step__head">
+            <div class="glass-icon">{% icone "layout-dashboard" %}</div>
+            <div><p class="project__cat">Étape 4</p><h3>Easy Desk, le centre de support multi-projets</h3></div>
+          </div>
+          <p>À force d'ajouter des produits, l'interface d'administration est devenue <strong>Easy Desk</strong> :
+          un seul endroit pour suivre les conversations et les escalades de tous les projets. Je l'ai mise en
+          production sur Render, avec l'API, la base PostgreSQL et l'interface React.</p>
+          <div class="step__logos">
+            <img src="{% static 'img/tech/django.svg' %}" alt="Django" width="24" height="24">
+            <img src="{% static 'img/tech/postgresql.svg' %}" alt="PostgreSQL" width="24" height="24">
+            <img src="{% static 'img/tech/react.svg' %}" alt="React" width="24" height="24">
+            <span>Django, PostgreSQL, React, Render</span>
+          </div>
+          {% if easy_desk.lien_demo %}<a href="{{ easy_desk.lien_demo }}" target="_blank" rel="noopener" class="btn btn--small">Voir Easy Desk {% icone "arrow-up-right" %}</a>{% endif %}
+        </article>
+      </div>
+
+      <div class="card lessons reveal">
+        <h3>Ce que Bakeli m'a appris</h3>
+        <ul class="project__points">
+          <li>Ajouter du code dans un produit qui tourne déjà, sans rien casser chez les utilisateurs.</li>
+          <li>Penser « plusieurs projets » dès le départ : une brique bien conçue se réutilise partout.</li>
+          <li>Travailler avec d'autres développeurs, sur leur code et à leur rythme.</li>
+          <li>Documenter ce que je fais, pour que la suite ne dépende pas que de moi.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include "partials/footer.html" %}
+{% endblock %}

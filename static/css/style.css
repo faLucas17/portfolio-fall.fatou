@@ -241,3 +241,85 @@ p { margin: 0 0 1em; }
   .stack__grid { gap: .6rem; }
   .chip--1 { left: 0; } .chip--2 { right: 0; }
 }
+
+/* ==========================================================
+   Éléments cliquables et pages internes
+   ========================================================== */
+.stat { display: block; padding: .4rem .6rem; margin: -.4rem -.6rem; border-radius: 14px; transition: background .2s, transform .2s; }
+.stat:hover { background: rgba(255, 255, 255, .75); transform: translateY(-2px); box-shadow: var(--shadow); }
+.stat span { display: inline-flex; align-items: center; gap: .3rem; }
+.stat .icon { width: .9em; height: .9em; color: var(--sky); opacity: .7; transition: opacity .2s, transform .2s; }
+.stat:hover .icon { opacity: 1; transform: translate(2px, -2px); }
+.stat:hover strong { color: var(--sky); }
+
+a.stack__tile { cursor: pointer; }
+a.stack__tile:hover { transform: translateY(-4px); box-shadow: 0 14px 28px -14px rgba(14, 165, 233, .6); border-color: var(--sky-light); }
+.stack__title small { font-weight: 400; color: var(--muted); opacity: .8; }
+a.chip { cursor: pointer; transition: box-shadow .2s; }
+a.chip:hover { box-shadow: var(--shadow-lg); }
+
+.about__fun { margin-top: 1rem; padding: .9rem 1.1rem; border-left: 3px solid var(--sky); background: var(--sky-soft); border-radius: 0 12px 12px 0; color: var(--navy); font-weight: 500; }
+.about__facts a { display: inline-flex; align-items: center; gap: .5rem; }
+.about__facts a:hover { color: var(--sky); }
+
+.link-more { margin-left: auto; display: inline-flex; align-items: center; gap: .3rem; font-size: .85rem; font-weight: 600; color: var(--sky); }
+.link-more:hover { text-decoration: underline; }
+.link-more .icon { width: 14px; height: 14px; }
+
+.tags a { display: inline-flex; align-items: center; gap: .35rem; color: inherit; }
+.tags li:has(a):hover { background: var(--sky); color: #fff; }
+.tags--logos li:has(a):hover { background: var(--sky-soft); color: var(--sky-deep); border-color: var(--sky-light); }
+
+/* En-tête des pages internes */
+.page-head { position: relative; overflow: hidden; padding: 130px 0 40px; background: linear-gradient(180deg, #FFFFFF, var(--bg)); }
+.page-head .container { position: relative; }
+.page-title { display: flex; align-items: center; gap: .8rem; font-size: clamp(2rem, 5vw, 3rem); }
+.page-title img { width: 44px; height: 44px; }
+.page-meta { color: var(--sky-deep); font-weight: 600; margin-bottom: 1rem; }
+.page-intro { max-width: 70ch; }
+.back { display: inline-flex; align-items: center; gap: .4rem; margin-bottom: 1.4rem; color: var(--muted); font-size: .9rem; font-weight: 500; }
+.back:hover { color: var(--sky); }
+.icon--back { transform: rotate(-135deg); }
+.section--tight { padding-top: 30px; }
+
+.filter-group { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1rem; margin-top: 1.2rem; }
+.filter-label { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); min-width: 100px; }
+.filter-group .filters { margin: 0; }
+a.filter { display: inline-flex; align-items: center; gap: .4rem; }
+a.filter img { width: 16px; height: 16px; }
+
+.empty { text-align: center; max-width: 520px; margin: 0 auto; display: grid; justify-items: center; gap: .6rem; }
+.empty .btn { margin: .2rem; }
+
+/* Page Bakeli */
+.steps { display: grid; gap: 1.4rem; margin-bottom: 1.4rem; }
+.step { position: relative; }
+.step__head, .degree .step__head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.step__head h3 { margin: 0; }
+.step__head .project__cat { margin-bottom: .1rem; }
+.step p { color: var(--muted); }
+.step strong { color: var(--navy); }
+.step__logos { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; padding: .6rem .9rem; border-radius: 12px; background: #F8FBFF; border: 1px solid var(--border); margin-bottom: 1rem; width: fit-content; }
+.step__logos img { width: 24px; height: 24px; object-fit: contain; }
+.step__logos span { font-size: .85rem; color: var(--muted); }
+.lessons h3 { margin-bottom: 1rem; }
+
+/* Page Formations */
+.degree p { color: var(--muted); }
+.degree .timeline__org { color: var(--sky-deep); }
+.degree__label { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--navy) !important; margin: 1.2rem 0 .7rem; }
+.degree .tags { margin-bottom: 1.2rem; }
+
+.footer a:hover { color: var(--sky); }
+
+@media (max-width: 760px) {
+  .page-head { padding-top: 110px; }
+  .filter-label { min-width: 0; width: 100%; }
+  .step__head { align-items: flex-start; }
+}
+
+/* Retouches */
+.back { display: flex; width: fit-content; }
+.stats { gap: 1.6rem; }
+.card .btn--glass { border: 1px solid var(--sky-light); box-shadow: none; color: var(--sky-deep); }
+.card .btn--glass:hover { background: var(--sky-soft); }

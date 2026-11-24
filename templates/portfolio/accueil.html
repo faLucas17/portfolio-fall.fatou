@@ -2,19 +2,7 @@
 {% load static icones %}
 {% block content %}
 
-<header class="nav" id="nav">
-  <div class="container nav__inner">
-    <a href="#accueil" class="logo"><img class="logo__avatar" src="{% static 'img/avatar.jpg' %}" alt="" width="40" height="40"><span>Fatou FALL</span></a>
-    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">{% icone "menu" %}</button>
-    <nav class="nav__links">
-      <a href="#a-propos">À propos</a>
-      <a href="#services">Services</a>
-      <a href="#projets">Projets</a>
-      <a href="#parcours">Parcours</a>
-      <a href="#contact" class="btn btn--small">Me contacter</a>
-    </nav>
-  </div>
-</header>
+{% include "partials/nav.html" %}
 
 <main>
   <!-- ========== ACCUEIL ========== -->
@@ -29,27 +17,27 @@
         <p class="hero__role">{{ profil.titre }}</p>
         <p class="hero__pitch">{{ profil.accroche }}</p>
         <div class="hero__cta">
-          <a href="#projets" class="btn">Voir mes projets {% icone "arrow-up-right" %}</a>
-          <a href="{% static 'cv/CV_Fatou_FALL.pdf' %}" class="btn btn--glass" download>{% icone "download" %} Télécharger mon CV</a>
+          <a href="{% url 'projets' %}" class="btn">Voir mes projets {% icone "arrow-up-right" %}</a>
+          <a href="{% static 'cv/CV_Fatou_Fall.pdf' %}" class="btn btn--glass" download>{% icone "download" %} Télécharger mon CV</a>
         </div>
         <ul class="stats">
-          <li><strong>6 mois</strong><span>en production chez Bakeli</span></li>
-          <li><strong>{{ nb_projets }}</strong><span>projets réalisés</span></li>
-          <li><strong>2</strong><span>Master 2 : logiciel et données</span></li>
+          <li><a href="{% url 'bakeli' %}" class="stat"><strong>6 mois</strong><span>en production chez Bakeli {% icone "arrow-up-right" %}</span></a></li>
+          <li><a href="{% url 'projets' %}" class="stat"><strong>{{ nb_projets }}</strong><span>projets réalisés {% icone "arrow-up-right" %}</span></a></li>
+          <li><a href="{% url 'formations' %}" class="stat"><strong>2</strong><span>Master 2 : logiciel et données {% icone "arrow-up-right" %}</span></a></li>
         </ul>
       </div>
 
-      <div class="hero__visual reveal" aria-hidden="true">
+      <div class="hero__visual reveal">
         <div class="stack glass">
-          <p class="stack__title">Mes outils au quotidien</p>
+          <p class="stack__title">Mes outils au quotidien <small>(cliquez pour voir les projets)</small></p>
           <div class="stack__grid">
             {% for t in hero_stack %}
-            <div class="stack__tile"><img src="{% logo_tech t %}" alt="" width="40" height="40"><span>{{ t }}</span></div>
+            <a class="stack__tile" href="{% url 'projets' %}?techno={{ t|urlencode }}" title="Voir mes projets {{ t }}"><img src="{% logo_tech t %}" alt="" width="40" height="40"><span>{{ t }}</span></a>
             {% endfor %}
           </div>
         </div>
-        <div class="chip glass chip--1">{% icone "circle-check" %} {{ nb_en_ligne }} projets en ligne</div>
-        <div class="chip glass chip--2">{% icone "rocket" %} Déployé sur Render</div>
+        <a href="{% url 'projets' %}?statut=en_ligne" class="chip glass chip--1">{% icone "circle-check" %} {{ nb_en_ligne }} projets en ligne</a>
+        <a href="{% url 'projets' %}?techno=Render" class="chip glass chip--2">{% icone "rocket" %} Déployé sur Render</a>
       </div>
     </div>
   </section>
@@ -66,11 +54,12 @@
       </div>
       <div class="reveal">
         <p class="eyebrow">À propos</p>
-        <h2>Du code jusqu'à la mise en ligne</h2>
+        <h2>Full Stack, mais pas que</h2>
         <div class="about__text">{{ profil.a_propos|linebreaks }}</div>
+        {% if profil.anecdote %}<p class="about__fun">{{ profil.anecdote }}</p>{% endif %}
         <ul class="about__facts">
           <li>{% icone "map-pin" %} {{ profil.localisation }}, je travaille aussi à distance</li>
-          <li>{% icone "graduation-cap" %} Université Iba Der Thiam de Thiès</li>
+          <li><a href="{% url 'formations' %}">{% icone "graduation-cap" %} Université Iba Der Thiam de Thiès</a></li>
           <li>{% icone "languages" %} Français courant, anglais usuel</li>
         </ul>
       </div>
@@ -103,7 +92,7 @@
       <div class="section__head reveal">
         <p class="eyebrow">Réalisations</p>
         <h2>Projets</h2>
-        <p class="section__sub">{{ nb_en_ligne }} projet{{ nb_en_ligne|pluralize }} en ligne, d'autres en cours. Cliquez pour les tester.</p>
+        <p class="section__sub">{{ nb_en_ligne }} projet{{ nb_en_ligne|pluralize }} en ligne, d'autres en cours. Cliquez sur une technologie pour voir tous les projets qui l'utilisent.</p>
       </div>
 
       <div class="filters reveal" role="tablist">
@@ -115,37 +104,7 @@
 
       <div class="grid grid--2 projects">
         {% for p in projets %}
-        <article class="card project reveal" data-cat="{{ p.categorie }}">
-          <div class="project__media">
-            {% if p.image_url %}
-              <img src="{{ p.image_url }}" alt="Capture de {{ p.titre }}" loading="lazy">
-            {% else %}
-              <div class="glass-icon glass-icon--lg">{% icone p.icone %}</div>
-              <div class="project__logos">
-                {% logos_uniques p.liste_technos as logos %}{% for nom, url in logos %}<img src="{{ url }}" alt="{{ nom }}" title="{{ nom }}" width="26" height="26">{% endfor %}
-              </div>
-            {% endif %}
-            <span class="status status--{{ p.statut }}">{{ p.get_statut_display }}</span>
-          </div>
-          <div class="project__body">
-            <p class="project__cat">{{ p.get_categorie_display }}</p>
-            <h3>{{ p.titre }}</h3>
-            {% if p.sous_titre %}<p class="project__sub">{{ p.sous_titre }}</p>{% endif %}
-            <p>{{ p.description }}</p>
-            {% if p.liste_points %}
-            <ul class="project__points">
-              {% for pt in p.liste_points %}<li>{{ pt }}</li>{% endfor %}
-            </ul>
-            {% endif %}
-            <ul class="tags">
-              {% for t in p.liste_technos %}<li>{{ t }}</li>{% endfor %}
-            </ul>
-            <div class="project__links">
-              {% if p.lien_demo %}<a href="{{ p.lien_demo }}" target="_blank" rel="noopener" class="btn btn--small">Voir le site {% icone "arrow-up-right" %}</a>{% endif %}
-              {% if p.lien_code %}<a href="{{ p.lien_code }}" target="_blank" rel="noopener" class="btn btn--small btn--glass"><img src="{% static 'img/tech/github.svg' %}" alt="" width="16" height="16"> Code</a>{% else %}<a href="#contact" class="btn btn--small btn--glass">Code sur demande</a>{% endif %}
-            </div>
-          </div>
-        </article>
+          {% include "partials/carte_projet.html" %}
         {% endfor %}
       </div>
     </div>
@@ -160,7 +119,7 @@
       </div>
       <div class="timeline-wrap">
         <div class="reveal">
-          <h3 class="timeline__title"><span class="glass-icon glass-icon--sm">{% icone "briefcase" %}</span> Expérience</h3>
+          <h3 class="timeline__title"><span class="glass-icon glass-icon--sm">{% icone "briefcase" %}</span> Expérience <a class="link-more" href="{% url 'bakeli' %}">Tout voir {% icone "arrow-up-right" %}</a></h3>
           <ol class="timeline">
             {% for e in experiences %}
             <li><span class="timeline__date">{{ e.periode }}</span><h4>{{ e.titre }}</h4><p class="timeline__org">{{ e.organisation }}</p>{% if e.description %}<p>{{ e.description }}</p>{% endif %}</li>
@@ -168,7 +127,7 @@
           </ol>
         </div>
         <div class="reveal">
-          <h3 class="timeline__title"><span class="glass-icon glass-icon--sm">{% icone "graduation-cap" %}</span> Formation</h3>
+          <h3 class="timeline__title"><span class="glass-icon glass-icon--sm">{% icone "graduation-cap" %}</span> Formation <a class="link-more" href="{% url 'formations' %}">Tout voir {% icone "arrow-up-right" %}</a></h3>
           <ol class="timeline">
             {% for f in formations %}
             <li><span class="timeline__date">{{ f.periode }}</span><h4>{{ f.titre }}</h4><p class="timeline__org">{{ f.organisation }}</p>{% if f.description %}<p>{{ f.description }}</p>{% endif %}</li>
@@ -183,7 +142,7 @@
         <div class="card skill reveal">
           <h4>{{ g.nom }}</h4>
           <ul class="tags tags--logos">
-            {% for c in g.liste %}{% logo_tech c as logo %}<li>{% if logo %}<img src="{{ logo }}" alt="" width="16" height="16">{% endif %}{{ c }}</li>{% endfor %}
+            {% for c in g.liste %}{% logo_tech c as logo %}<li>{% if logo %}<a href="{% url 'projets' %}?techno={{ c|urlencode }}"><img src="{{ logo }}" alt="" width="16" height="16">{{ c }}</a>{% else %}{{ c }}{% endif %}</li>{% endfor %}
           </ul>
         </div>
         {% endfor %}
@@ -225,9 +184,5 @@
   </section>
 </main>
 
-<footer class="footer">
-  <div class="container footer__inner">
-    <p>© {% now "Y" %} {{ profil.nom }}, {{ profil.titre }}</p>
-  </div>
-</footer>
+{% include "partials/footer.html" %}
 {% endblock %}

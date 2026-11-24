@@ -14,7 +14,7 @@ document.querySelectorAll(".nav__links a").forEach((a) =>
 );
 
 // Filtres des projets
-const filters = document.querySelectorAll(".filter");
+const filters = document.querySelectorAll("button.filter");
 const projects = document.querySelectorAll(".project");
 filters.forEach((btn) =>
   btn.addEventListener("click", () => {
