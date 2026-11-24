@@ -9,17 +9,20 @@ ACCROCHE = (
 )
 
 A_PROPOS = (
-    "J'ai commencé par le développement, puis je me suis passionnée pour les données. "
-    "Aujourd'hui, je termine deux Masters : un en Génie Logiciel, un en Sciences des Données. "
-    "Concrètement, je sais créer une application de A à Z, et je sais aussi analyser les données qu'elle contient.\n\n"
-    "Ce que je préfère, c'est voir une idée devenir une vraie application que des gens utilisent. "
-    "Pendant mon stage chez Bakeli, j'ai travaillé six mois sur des produits en ligne : un chatbot de support, "
-    "une application mobile, et une connexion unique pour plusieurs applications.\n\n"
-    "Je ne m'arrête pas quand le code marche sur mon ordinateur. Je mets l'application en ligne, je configure "
-    "les e-mails et la base de données, et je vérifie que tout fonctionne pour l'utilisateur. J'aime aussi créer "
-    "des applications adaptées à chez nous, avec Wave, Orange Money et le FCFA.\n\n"
-    "Côté données, j'aime prendre un tableau de chiffres et en tirer quelque chose de clair : "
-    "un graphique, un tableau de bord, une réponse à une vraie question."
+    "Je suis développeuse Full Stack, et j'adore ça. Mais ce qui rend mon profil un peu différent, "
+    "c'est que je termine en parallèle un deuxième Master en Sciences des Données. Résultat : je sais coder "
+    "une application de A à Z, et je sais aussi analyser les données qu'elle produit.\n\n"
+    "Ce qui me motive au quotidien, c'est de transformer une idée en une vraie application que les gens "
+    "utilisent. Pendant 6 mois chez Bakeli, je l'ai fait sur des produits bien réels : un chatbot de support, "
+    "une appli mobile, et un système d'authentification unique.\n\n"
+    "Et le fameux « ça marche sur ma machine » ? Très peu pour moi. Mon truc, c'est d'aller jusqu'au bout : "
+    "je déploie, je configure la base de données, les e-mails, et je vérifie que l'utilisateur final n'a aucun "
+    "souci. J'aime aussi rendre mes applications concrètes et utiles au quotidien, en intégrant des solutions "
+    "de paiement mobile (Wave, Orange Money) par exemple.\n\n"
+    "Et la Data dans tout ça ? C'est mon atout en plus. Quand une application génère des chiffres, je suis "
+    "capable de les transformer en tableaux de bord clairs et en réponses concrètes. En gros, je code votre "
+    "produit, et je vous aide aussi à comprendre ce qu'il raconte.\n\n"
+    "Ma devise ? Faire simple, faire utile, et faire en sorte que ça tourne en prod."
 )
 
 GLOWLUXE = dict(
