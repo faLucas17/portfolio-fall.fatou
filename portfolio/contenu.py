@@ -9,18 +9,17 @@ ACCROCHE = (
 )
 
 A_PROPOS = (
-    "En fin de double cursus : Génie Logiciel d'un côté, Sciences des Données de l'autre. "
-    "On m'a souvent demandé de choisir entre les deux. Je n'ai jamais vraiment compris pourquoi : "
-    "j'aime autant penser l'architecture d'une application que comprendre ce que racontent les chiffres.\n\n"
-    "Chez Bakeli, j'ai passé six mois sur des produits utilisés par de vrais clients. J'y ai appris "
-    "une chose simple : « ça marche sur ma machine » ne prouve rien. Le vrai test, c'est la production, "
-    "avec des utilisateurs qui cliquent exactement là où on ne les attendait pas.\n\n"
-    "Depuis, j'ai une petite obsession : livrer. Je configure les e-mails, le stockage, la base de "
-    "données, et je ne lâche pas tant que le lien ne s'ouvre pas sur le téléphone du client. "
-    "J'ai aussi un faible pour les applications pensées pour chez nous : paiement Wave et Orange Money, "
-    "factures en FCFA, dossiers au format OHADA.\n\n"
-    "Travailler avec moi, c'est avoir quelqu'un qui pose des questions avant d'écrire la première ligne, "
-    "qui explique simplement ce qu'elle fait, et pour qui un bug est d'abord une énigme à résoudre."
+    "J'ai commencé par le développement, puis je me suis passionnée pour les données. "
+    "Aujourd'hui, je termine deux Masters : un en Génie Logiciel, un en Sciences des Données. "
+    "Concrètement, je sais créer une application de A à Z, et je sais aussi analyser les données qu'elle contient.\n\n"
+    "Ce que je préfère, c'est voir une idée devenir une vraie application que des gens utilisent. "
+    "Pendant mon stage chez Bakeli, j'ai travaillé six mois sur des produits en ligne : un chatbot de support, "
+    "une application mobile, et une connexion unique pour plusieurs applications.\n\n"
+    "Je ne m'arrête pas quand le code marche sur mon ordinateur. Je mets l'application en ligne, je configure "
+    "les e-mails et la base de données, et je vérifie que tout fonctionne pour l'utilisateur. J'aime aussi créer "
+    "des applications adaptées à chez nous, avec Wave, Orange Money et le FCFA.\n\n"
+    "Côté données, j'aime prendre un tableau de chiffres et en tirer quelque chose de clair : "
+    "un graphique, un tableau de bord, une réponse à une vraie question."
 )
 
 GLOWLUXE = dict(
