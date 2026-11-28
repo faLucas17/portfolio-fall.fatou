@@ -3,7 +3,7 @@ import logging
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
-from .emails import envoyer_notification
+from .emails import envoyer_accuse_reception, envoyer_notification
 from .forms import ContactForm
 from .models import GroupeCompetences, Parcours, Projet, Service
 
@@ -33,10 +33,12 @@ def accueil(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             msg = form.save()
-            try:
-                envoyer_notification(msg)
-            except Exception:  # le message reste enregistré dans l'admin
-                logger.exception("Envoi de l'e-mail de contact impossible")
+            site_url = request.build_absolute_uri("/").rstrip("/")
+            for envoi in (lambda: envoyer_notification(msg), lambda: envoyer_accuse_reception(msg, site_url)):
+                try:
+                    envoi()
+                except Exception:  # le message reste enregistré dans l'admin
+                    logger.exception("Envoi d'un e-mail de contact impossible")
             messages.success(request, "Merci ! Votre message a bien été envoyé. Je vous réponds rapidement.")
             return redirect("/#contact")
         messages.error(request, "Merci de vérifier les champs du formulaire.")

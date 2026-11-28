@@ -1,0 +1,16 @@
+{% autoescape off %}Bonjour {{ msg.nom }},
+
+Merci pour votre message, je l'ai bien reçu. Je vous réponds sous 24 heures.
+
+Pour rappel, voici ce que vous m'avez écrit :
+{% if msg.sujet %}Sujet : {{ msg.sujet }}
+{% endif %}
+{{ msg.contenu }}
+
+En attendant, vous pouvez parcourir mes projets : {{ site_url }}/projets/
+
+À très vite,
+Fatou FALL
+Développeuse Full Stack
+{{ site_url }}
+{% endautoescape %}
