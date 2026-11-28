@@ -26,19 +26,34 @@ A_PROPOS = (
 )
 
 GLOWLUXE = dict(
-    sous_titre="Application mobile e-commerce de mode",
+    sous_titre="Boutique de mode en ligne, projet client réalisé à deux",
     description=(
-        "Boutique de mode (prêt-à-porter, crochet fait main, accessoires) sur iPhone, Android et web. "
-        "Du catalogue jusqu'à la livraison suivie en direct sur une carte."
+        "Boutique de mode (prêt-à-porter, crochet fait main, accessoires) réalisée pour une cliente "
+        "avec une amie développeuse. Une seule base de code pour iPhone, Android et le web, "
+        "du catalogue jusqu'à la livraison suivie en direct sur une carte."
     ),
     points_cles=(
         "Panier sans compte, fusionné automatiquement à la connexion\n"
         "Paiement Wave, Orange Money et carte, avec acompte selon le montant\n"
         "Attribution automatique des livreurs (disponibilité, charge, distance) et suivi en direct\n"
         "Espace livreur dans l'appli : disponibilité, GPS, encaissement\n"
-        "E-mails Brevo : confirmation, paiement reçu, livreur désigné, promotions"
+        "E-mails Brevo : confirmation, paiement reçu, livreur désigné, promotions\n"
+        "Version web en production sur Cloudflare Pages"
     ),
-    technologies="Expo, React Native, Django, PostgreSQL, Brevo",
+    technologies="Expo, React Native, Django, PostgreSQL, Cloudflare, Brevo",
+    categorie="client",
+    statut="en_ligne",
+    lien_demo="https://glowluxe-99q.pages.dev/",
+)
+
+BAYT_AL_ILM = dict(
+    titre="Bayt Al-Ilm CATK",
+    sous_titre="Bibliothèque numérique, projet client (anciennement Maktaba CATK)",
+    description=(
+        "Bibliothèque numérique avec une API Django et une interface React, réalisée pour un client. "
+        "Déploiements automatiques à chaque mise à jour du code."
+    ),
+    categorie="client",
 )
 
 AL_BARAKAH = dict(

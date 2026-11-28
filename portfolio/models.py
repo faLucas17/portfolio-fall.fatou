@@ -55,6 +55,7 @@ ALIAS_TECHNOS = {
     "react": {"react", "react native"},
     "laravel": {"laravel", "filament"},
     "cloudflare": {"cloudflare r2", "cloudflare"},
+    "cloudflare r2": {"cloudflare r2", "cloudflare"},
 }
 
 

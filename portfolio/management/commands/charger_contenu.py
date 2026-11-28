@@ -5,7 +5,7 @@ Pour tout réinitialiser : python manage.py charger_contenu --reset
 """
 from django.core.management.base import BaseCommand
 
-from portfolio.contenu import A_PROPOS, ACCROCHE, AL_BARAKAH, GLOWLUXE
+from portfolio.contenu import A_PROPOS, ACCROCHE, AL_BARAKAH, BAYT_AL_ILM, GLOWLUXE
 from portfolio.models import GroupeCompetences, Parcours, Profil, Projet, Service
 
 PROJETS = [
@@ -69,12 +69,7 @@ PROJETS = [
         en_vedette=True, ordre=0,
     ),
     dict(
-        titre="Maktaba CATK",
-        sous_titre="Bibliothèque numérique",
-        description=(
-            "Bibliothèque numérique avec une API Django et une interface React. "
-            "Déploiements automatiques à chaque mise à jour du code."
-        ),
+        **BAYT_AL_ILM,
         points_cles=(
             "Backend Django déployé sur Render\n"
             "Frontend React déployé sur Netlify\n"
@@ -82,7 +77,7 @@ PROJETS = [
             "Publication sur le Play Store et l'App Store prévue"
         ),
         technologies="Django, React, Render, Netlify, Cloudflare R2, Brevo",
-        categorie="perso", statut="en_ligne", icone="book-open",
+        statut="en_ligne", icone="book-open",
         lien_demo="https://maktaba-catk.netlify.app/",
         en_vedette=True, ordre=3,
     ),
@@ -104,7 +99,7 @@ PROJETS = [
     ),
     dict(
         titre="GlowLuxe By Sofa", **GLOWLUXE,
-        categorie="perso", statut="en_cours", icone="shopping-bag", ordre=5,
+        icone="shopping-bag", ordre=5,
     ),
     AL_BARAKAH,
     dict(
