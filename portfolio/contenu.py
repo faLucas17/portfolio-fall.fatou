@@ -48,12 +48,13 @@ GLOWLUXE = dict(
 
 BAYT_AL_ILM = dict(
     titre="Bayt Al-Ilm CATK",
-    sous_titre="Bibliothèque numérique, projet client (anciennement Maktaba CATK)",
+    sous_titre="Bibliothèque numérique, projet client",
     description=(
         "Bibliothèque numérique avec une API Django et une interface React, réalisée pour un client. "
         "Déploiements automatiques à chaque mise à jour du code."
     ),
     categorie="client",
+    lien_demo="https://baytalilm-catk.netlify.app/",
 )
 
 AL_BARAKAH = dict(

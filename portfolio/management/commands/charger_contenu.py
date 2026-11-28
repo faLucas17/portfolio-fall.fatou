@@ -78,7 +78,6 @@ PROJETS = [
         ),
         technologies="Django, React, Render, Netlify, Cloudflare R2, Brevo",
         statut="en_ligne", icone="book-open",
-        lien_demo="https://maktaba-catk.netlify.app/",
         en_vedette=True, ordre=3,
     ),
     dict(
