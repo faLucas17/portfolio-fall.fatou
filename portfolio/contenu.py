@@ -26,11 +26,11 @@ A_PROPOS = (
 )
 
 GLOWLUXE = dict(
-    sous_titre="Boutique de mode en ligne, projet client réalisé à deux",
+    sous_titre="Boutique de mode en ligne, co-fondée avec une amie, développée seule",
     description=(
-        "Boutique de mode (prêt-à-porter, crochet fait main, accessoires) réalisée pour une cliente "
-        "avec une amie développeuse. Une seule base de code pour iPhone, Android et le web, "
-        "du catalogue jusqu'à la livraison suivie en direct sur une carte."
+        "Boutique de mode (prêt-à-porter, crochet fait main, accessoires) que nous avons lancée "
+        "à deux avec une amie. J'ai conçu et développé toute l'application seule : une seule base "
+        "de code pour iPhone, Android et le web, du catalogue jusqu'à la livraison suivie en direct."
     ),
     points_cles=(
         "Panier sans compte, fusionné automatiquement à la connexion\n"
@@ -41,7 +41,7 @@ GLOWLUXE = dict(
         "Version web en production sur Cloudflare Pages"
     ),
     technologies="Expo, React Native, Django, PostgreSQL, Cloudflare, Brevo",
-    categorie="client",
+    categorie="perso",
     statut="en_ligne",
     lien_demo="https://glowluxe-99q.pages.dev/",
 )
